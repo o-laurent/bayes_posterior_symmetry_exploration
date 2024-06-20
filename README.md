@@ -12,6 +12,8 @@ The a large part of the models were trained using the [TorchUncertainty](https:/
 
 The code currently includes the scripts to "remove" permutation and scaling symmetries, including the convex optimization using the `cvxpy` package. The whole code of the experiments is still a bit messy but I plan to add it here.
 
+I'll rework a bit the files on the symmetries, but the scale_resnet.py should be a good starting point. Tell me if you need examples to understand the how to use the code.
+
 The translation of [mmdagg](https://github.com/antoninschrab/mmdagg-paper) to PyTorch can be found [here](https://github.com/o-laurent/torchMMD).
 
 ## The poster
