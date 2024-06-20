@@ -1,0 +1,73 @@
+[project]
+name = "posterior_symmetry_exploration"
+version = "0.0.1a"
+authors = [
+    { name = "ENSTA U2IS", email = "gianni.franchi@ensta-paris.fr" },
+    { name = "Gianni Franchi", email = "gianni.franchi@ensta-paris.fr" },
+]
+description = "Code of 'A Symmetry-Aware Exploration of Bayesian Neural Network Posteriors'"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "ruff",
+    "cvxpy",
+    "torch_uncertainty",
+]
+
+[project.urls]
+homepage = "https://ensta-u2is-ai.github.io/Symmetry-Aware-BNN/"
+paper = "https://arxiv.org/abs/2310.08287"
+
+[tool.ruff]
+line-length = 180
+target-version = "py310"
+lint.extend-select = [
+    "A",
+    "ARG", 
+    "B",
+    "C4",
+    "D",
+    "ERA",
+    "F",
+    "G",
+    "I",
+    "ISC",
+    "ICN",
+    "N",
+    "PERF",
+    "PIE",
+    "PTH",
+    "PYI",
+    "Q",
+    "RET",
+    "RUF",
+    "RSE",
+    "S",
+    "SIM",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+lint.ignore = [
+    "ARG002",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D107",
+    "D205",
+    "D206",
+    "ISC001",
+    "N818",
+    "N812",
+    "RUF012",
+    "S101",
+    "TRY003",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

@@ -1,5 +1,4 @@
 import copy
-from typing import List, Tuple
 
 import torch
 
@@ -12,7 +11,7 @@ def permute(model, custom_pis=None, verbose=False):
 
     perm_weights = {}
     pis = []
-    perm_left, perm_right = None, None
+    perm_left, _perm_right = None, None
     previous_key, previous_mod = None, None
     layer = 0
     for key, mod in model.named_modules():
@@ -25,10 +24,7 @@ def permute(model, custom_pis=None, verbose=False):
             if perm_left is not None and perm_left.numel() != 1:
                 weight = weight[:, perm_left]
 
-            if custom_pis is None:
-                perm_left = torch.argsort(weight, dim=0, descending=True)[..., 0]
-            else:
-                perm_left = custom_pis[layer]
+            perm_left = torch.argsort(weight, dim=0, descending=True)[..., 0] if custom_pis is None else custom_pis[layer]
 
             if perm_left is not None and perm_left.numel() != 1:
                 weight = weight[perm_left, :]

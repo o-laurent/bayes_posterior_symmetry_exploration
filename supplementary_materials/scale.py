@@ -1,18 +1,16 @@
-""" 
+"""
 This file contains a minimum working example of the scaling class
 for fully connected networks. We will release the full code after
 the anonymity period.
 """
 
 import copy
-from typing import List
 
 import torch
-
 from utils import col_wise_multiplication, row_wise_multiplication
 
 
-def dimension(model: torch.nn.Module) -> List:
+def dimension(model: torch.nn.Module) -> list:
     """Compute the dimension of the scaling degrees of freedom of the model.
 
     Args:
@@ -22,7 +20,7 @@ def dimension(model: torch.nn.Module) -> List:
         List: The dimension of the scaling degrees of freedom of the model.
     """
     dim = [None]
-    for key, mod in model.named_modules():
+    for _key, mod in model.named_modules():
         if isinstance(mod, torch.nn.modules.Linear):
             dim.append(mod.out_features)
         else:
@@ -35,7 +33,7 @@ def dimension(model: torch.nn.Module) -> List:
 
 def _get_weights(model, squared=True):
     weights = []
-    for key, mod in model.named_modules():
+    for _key, mod in model.named_modules():
         if isinstance(mod, torch.nn.modules.Linear):
             weights.append(mod.weight.detach() ** (2 if squared else 1))
         else:
@@ -54,10 +52,7 @@ def _check_consistency(model, scaled_weights, verbose=False):
     mse = torch.sum((scaled_hash - model_hash) ** 2).item()
     if mse > 1e-4:
         scaled_weights = None
-    if scaled_weights is not None:
-        ending_mass = sum([torch.sum(w) for w in _get_weights(scaled_model)])
-    else:
-        ending_mass = None
+    ending_mass = sum([torch.sum(w) for w in _get_weights(scaled_model)]) if scaled_weights is not None else None
 
     if verbose:
         print(f"Model MSE:{mse}")
@@ -72,7 +67,7 @@ def _scale_linear(
     module: torch.nn.modules.Linear,
     lambda_mult: torch.Tensor = None,
     lambda_div: torch.Tensor = None,
-) -> List[torch.Tensor]:
+) -> list[torch.Tensor]:
     weight = torch.clone(module.weight.detach())
 
     if lambda_div is not None:
