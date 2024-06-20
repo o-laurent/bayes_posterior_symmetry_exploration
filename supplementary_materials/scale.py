@@ -1,5 +1,4 @@
-"""
-This file contains a minimum working example of the scaling class
+"""This file contains a minimum working example of the scaling class
 for fully connected networks. We will release the full code after
 the anonymity period.
 """
