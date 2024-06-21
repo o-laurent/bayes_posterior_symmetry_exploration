@@ -2,7 +2,7 @@
 
 This is the official repository for the code of the paper [A Symmetry-Aware Exploration of Bayesian Neural Network Posteriors](https://arxiv.org/abs/2310.08287) published at ICLR 2024.
 
-## The Checkpoint dataset
+## The Checkpoints dataset
 
 The Checkpoint dataset can be found on [Hugging Face](https://huggingface.co/datasets/torch-uncertainty/Checkpoints). I have put there the most interesting networks and plan to add the rest shortly. Tell me if this is of interest to you in an issue.
 
